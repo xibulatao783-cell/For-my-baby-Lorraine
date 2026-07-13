@@ -1,0 +1,273 @@
+:root{
+  --blush:#fdeaf0;
+  --blush-deep:#f6d3de;
+  --rose:#b23a5c;
+  --rose-dark:#8a2946;
+  --plum:#4a2438;
+  --plum-soft:#7a4a5f;
+  --cream:#fffaf6;
+  --gold:#d8a657;
+  --shadow: 0 20px 60px rgba(74,36,56,0.18);
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  background: radial-gradient(circle at 50% 0%, var(--blush) 0%, var(--blush-deep) 65%, #f0c3d2 100%);
+  font-family:'Nunito', sans-serif;
+  color:var(--plum);
+  overflow-x:hidden;
+}
+
+#petals{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+#petals.show{opacity:1;}
+
+.screen{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  width:100%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:32px 20px;
+  text-align:center;
+}
+.screen.active{display:flex;}
+
+.eyebrow{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  letter-spacing:0.08em;
+  color:var(--plum-soft);
+  font-size:0.95rem;
+  margin:0 0 6px;
+}
+
+/* ---------- Gate ---------- */
+.gate-card{
+  background:var(--cream);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  padding:48px 36px;
+  max-width:360px;
+  width:100%;
+  border:1px solid rgba(178,58,92,0.15);
+}
+.script-title{
+  font-family:'Dancing Script', cursive;
+  font-size:3.2rem;
+  color:var(--rose);
+  margin:0 0 6px;
+  line-height:1;
+}
+.gate-hint{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1rem;
+  color:var(--plum-soft);
+  margin:0 0 22px;
+}
+#passwordInput{
+  width:100%;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1.5px solid var(--blush-deep);
+  background:#fff;
+  font-size:1.1rem;
+  text-align:center;
+  letter-spacing:0.12em;
+  color:var(--plum);
+  outline:none;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+#passwordInput:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 0 3px rgba(178,58,92,0.15);
+}
+#unlockBtn{
+  margin-top:16px;
+  width:100%;
+  padding:13px 16px;
+  border:none;
+  border-radius:12px;
+  background:var(--rose);
+  color:#fff;
+  font-family:'Nunito', sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  letter-spacing:0.03em;
+  cursor:pointer;
+  transition:background .2s ease, transform .15s ease;
+}
+#unlockBtn:hover{background:var(--rose-dark);}
+#unlockBtn:active{transform:scale(0.97);}
+#unlockBtn:focus-visible, #passwordInput:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+}
+.gate-error{
+  font-family:'Cormorant Garamond', serif;
+  color:var(--rose-dark);
+  font-size:0.95rem;
+  margin:14px 0 0;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+.gate-error.show{opacity:1;}
+.gate-card.shake{animation:shake .4s ease;}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%{transform:translateX(-8px);}
+  40%{transform:translateX(8px);}
+  60%{transform:translateX(-6px);}
+  80%{transform:translateX(6px);}
+}
+
+/* ---------- Envelope scene ---------- */
+.float-in{animation:floatIn 1s ease both;}
+@keyframes floatIn{from{opacity:0; transform:translateY(-8px);} to{opacity:1; transform:translateY(0);}}
+
+.envelope-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.envelope{
+  position:relative;
+  width:220px;
+  height:150px;
+  filter:drop-shadow(0 18px 30px rgba(74,36,56,0.25));
+  transition:transform .3s ease;
+}
+.envelope-wrap:hover .envelope{transform:translateY(-4px) scale(1.02);}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(160deg, var(--cream) 0%, #fff 100%);
+  border:1.5px solid var(--blush-deep);
+  border-radius:10px;
+}
+.envelope-back::before,
+.envelope-back::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:0;
+  height:0;
+  border-style:solid;
+}
+.envelope-back::before{
+  left:0;
+  border-width:0 0 82px 110px;
+  border-color:transparent transparent rgba(178,58,92,0.08) transparent;
+}
+.envelope-back::after{
+  right:0;
+  border-width:0 110px 82px 0;
+  border-color:transparent transparent rgba(178,58,92,0.08) transparent;
+}
+
+.envelope-flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-width:0 110px 95px 110px;
+  border-color:transparent transparent var(--blush-deep) transparent;
+  transform-origin:top center;
+  transition:transform .6s cubic-bezier(.7,-0.2,.3,1.4);
+  z-index:3;
+}
+
+.envelope-seal{
+  position:absolute;
+  top:58px;
+  left:50%;
+  transform:translate(-50%,0);
+  font-size:2.1rem;
+  z-index:4;
+  animation:pulse 1.8s ease-in-out infinite;
+  transition:opacity .4s ease, transform .4s ease;
+}
+@keyframes pulse{
+  0%,100%{transform:translate(-50%,0) scale(1);}
+  50%{transform:translate(-50%,0) scale(1.12);}
+}
+
+.touch-label{
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.15rem;
+  letter-spacing:0.06em;
+  color:var(--rose-dark);
+}
+
+/* opened state */
+.envelope.opened .envelope-flap{
+  transform:rotateX(180deg);
+}
+.envelope.opened .envelope-seal{
+  opacity:0;
+  transform:translate(-50%,-40px) scale(0.6);
+}
+.envelope-wrap.opening{pointer-events:none;}
+
+/* ---------- Letter ---------- */
+.letter-card{
+  background:var(--cream);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:52px 42px;
+  max-width:640px;
+  width:100%;
+  text-align:left;
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.18rem;
+  line-height:1.75;
+  color:var(--plum);
+  border:1px solid rgba(178,58,92,0.15);
+}
+.letter-card p{margin:0 0 20px;}
+.letter-heading{
+  font-family:'Dancing Script', cursive;
+  font-size:2.1rem;
+  color:var(--rose);
+  margin-bottom:24px !important;
+}
+.signature{
+  font-family:'Dancing Script', cursive;
+  font-size:1.6rem;
+  color:var(--rose-dark);
+  text-align:right;
+  margin-top:12px !important;
+}
+
+@media (max-width:480px){
+  .gate-card{padding:38px 24px;}
+  .letter-card{padding:34px 24px; font-size:1.08rem;}
+  .script-title{font-size:2.6rem;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
