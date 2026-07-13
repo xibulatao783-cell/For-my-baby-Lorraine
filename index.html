@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lorraine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Falling flowers canvas, always in background once unlocked -->
+<canvas id="petals"></canvas>
+
+<!-- SCREEN 1: Password gate -->
+<section id="gate" class="screen active">
+  <div class="gate-card">
+    <p class="eyebrow">a small door, just for you</p>
+    <h1 class="script-title">Lorraine</h1>
+    <p class="gate-hint">type the date only we would know</p>
+    <input type="text" id="passwordInput" placeholder="••••••••" inputmode="numeric" autocomplete="off">
+    <button id="unlockBtn">Open</button>
+    <p class="gate-error" id="gateError">not quite &mdash; try again, love</p>
+  </div>
+</section>
+
+<!-- SCREEN 2: Envelope scene -->
+<section id="scene" class="screen">
+  <p class="eyebrow float-in">05.28.2026</p>
+  <div class="envelope-wrap" id="envelopeWrap">
+    <div class="envelope" id="envelope">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal">🧧</div>
+    </div>
+    <p class="touch-label" id="touchLabel">Touch envelope.</p>
+  </div>
+</section>
+
+<!-- SCREEN 3: Letter -->
+<section id="letter" class="screen">
+  <div class="letter-card">
+    <p class="letter-heading">Hi baby, Lorraine,</p>
+
+    <p>Loving you feels like one of the most beautiful things that has ever happened to me. You have this gentle way of making my heart feel safe, understood, and deeply happy, and I don&rsquo;t think you even realize how much light you bring into my life just by being you. Every time I think of you, I feel this soft kind of peace mixed with excitement, like my heart has found someone it never wants to lose.</p>
+
+    <p>What I love most about you is not just how beautiful you are, but how your presence can turn an ordinary moment into something I want to remember forever. You make me feel seen in ways words can barely explain, and you make love feel tender, genuine, and real. Being close to you feels like home, and caring for you is never something I have to try hard to do, because my heart naturally chooses you.</p>
+
+    <p>I want you to know that you are deeply cherished. Not just for the good moments, not just for the way you make me smile, but for who you are at your core. I admire your heart, your softness, your strength, and the way you make everything feel a little warmer. If I could, I would remind you every single day how precious you are, how lovely you are, and how grateful I am that you exist.</p>
+
+    <p>I love you, Lorraine, in the quiet moments, in the loud ones, in the simple conversations, and in the feelings that stay with me long after. And if there&rsquo;s one thing I hope you always feel from me, it&rsquo;s this, you are loved so gently, so sincerely, and so much more deeply than I could ever fully put into words.</p>
+
+    <p class="signature">&mdash; xi.</p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
